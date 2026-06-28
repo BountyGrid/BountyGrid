@@ -19,3 +19,16 @@ mvn spring-boot:run
 ```
 
 Open `http://localhost:8080`.
+
+## Android app
+
+The native Android client lives in `android/`. It calls the Spring Boot API at
+`http://10.0.2.2:8080/api` by default, which is the Android emulator address for
+your host machine.
+
+1. Start the backend with `mvn spring-boot:run`.
+2. Open `android/` in Android Studio.
+3. Run the `app` configuration on an emulator or device.
+
+If you run on a physical phone, change the API base URL on the login screen to
+your computer's LAN address, for example `http://192.168.1.20:8080/api`.
