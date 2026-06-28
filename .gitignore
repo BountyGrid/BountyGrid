@@ -10,9 +10,6 @@ uploads/
 application-prod.properties
 .gradle/
 build/
-android/.gradle/
-android/**/build/
-android/local.properties
 mobile/.dart_tool/
 mobile/.flutter-plugins
 mobile/.flutter-plugins-dependencies
