@@ -1,16 +1,21 @@
-## Hi there 👋
+# BountyGrid
 
-<!--
-**BountyGrid/BountyGrid** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+BountyGrid is a Spring Boot lost-and-found reward platform based on the developer documentation.
 
-Here are some ideas to get you started:
+## Stack
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- Java 17
+- Spring Boot 3.2
+- Thymeleaf
+- Spring Security with JWT cookies
+- Spring Data JPA
+- H2 for development, PostgreSQL for production
+- STOMP WebSocket messaging
+
+## Run
+
+```bash
+mvn spring-boot:run
+```
+
+Open `http://localhost:8080`.

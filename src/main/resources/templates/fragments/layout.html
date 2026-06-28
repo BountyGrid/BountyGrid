@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title layout:title-pattern="$CONTENT_TITLE - BountyGrid">BountyGrid</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<nav class="nav">
+    <a class="brand" th:href="@{/home}">BountyGrid</a>
+    <div class="nav-links">
+        <a th:href="@{/alerts/post}">Post</a>
+        <a th:href="@{/wallet}">Wallet</a>
+        <a th:href="@{/leaderboard}">Leaderboard</a>
+        <a th:href="@{/sos}">SOS</a>
+        <a th:href="@{/stories}">Stories</a>
+        <a th:href="@{/profile}">Profile</a>
+        <form th:action="@{/logout}" method="post"><button type="submit">Logout</button></form>
+    </div>
+</nav>
+<div th:if="${success}" class="toast success" th:text="${success}"></div>
+<div th:if="${error}" class="toast error" th:text="${error}"></div>
+<main layout:fragment="content"></main>
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

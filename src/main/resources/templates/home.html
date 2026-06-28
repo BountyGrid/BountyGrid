@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head><title>Home</title></head>
+<body>
+<main layout:fragment="content" class="page">
+    <header class="page-header">
+        <h1>Nearby alerts</h1>
+        <a class="button primary" th:href="@{/alerts/post}">Post alert</a>
+    </header>
+    <section class="grid">
+        <article class="card" th:each="alert : ${alerts}">
+            <img th:if="${alert.photoUrl}" th:src="${alert.photoUrl}" alt="">
+            <h2 th:text="${alert.title}">Lost item</h2>
+            <p th:text="${alert.description}">Description</p>
+            <p><strong th:text="${alert.city}">City</strong> <span th:text="${alert.rewardAmount}">0</span></p>
+            <a th:href="@{/alerts/{id}(id=${alert.id})}">View</a>
+        </article>
+    </section>
+</main>
+</body>
+</html>

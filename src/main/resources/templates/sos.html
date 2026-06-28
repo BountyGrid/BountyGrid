@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head><title>SOS</title></head>
+<body>
+<main layout:fragment="content" class="page">
+    <h1>SOS broadcasts</h1>
+    <form th:action="@{/sos/broadcast}" method="post"><input name="alertId" placeholder="Alert ID"><input name="radiusKm" type="number" value="25"><button class="primary">Broadcast</button></form>
+    <article class="card" th:each="broadcast : ${broadcasts}"><h2 th:text="${broadcast.alert.title}">Alert</h2><p th:text="${broadcast.radiusKm}">25</p></article>
+</main>
+</body>
+</html>

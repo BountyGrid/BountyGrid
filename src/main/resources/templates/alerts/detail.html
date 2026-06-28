@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head><title th:text="${alert.title}">Alert</title></head>
+<body>
+<main layout:fragment="content" class="page narrow">
+    <img class="hero-img" th:if="${alert.photoUrl}" th:src="${alert.photoUrl}" alt="">
+    <h1 th:text="${alert.title}">Alert</h1>
+    <p th:text="${alert.description}">Description</p>
+    <dl>
+        <dt>Type</dt><dd th:text="${alert.alertType}">LOST</dd>
+        <dt>Category</dt><dd th:text="${alert.category}">OTHER</dd>
+        <dt>Reward</dt><dd th:text="${alert.rewardAmount}">0</dd>
+    </dl>
+    <h2>Submit a tip</h2>
+    <form th:action="@{/alerts/{id}/tips(id=${alert.id})}" th:object="${tipRequest}" method="post">
+        <textarea th:field="*{content}" required></textarea>
+        <button class="primary" type="submit">Send tip</button>
+    </form>
+</main>
+</body>
+</html>

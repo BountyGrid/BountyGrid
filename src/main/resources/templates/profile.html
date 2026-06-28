@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head><title>Profile</title></head>
+<body>
+<main layout:fragment="content" class="page narrow">
+    <h1 th:text="${user.name}">Profile</h1>
+    <p th:text="${user.email}">email</p>
+    <p>Points: <strong th:text="${user.points}">0</strong></p>
+    <p>Badge: <strong th:text="${user.currentBadge}">newcomer</strong></p>
+</main>
+</body>
+</html>

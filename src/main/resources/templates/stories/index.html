@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head><title>Stories</title></head>
+<body>
+<main layout:fragment="content" class="page">
+    <h1>Recovery stories</h1>
+    <form th:action="@{/stories/create}" th:object="${storyRequest}" method="post">
+        <input th:field="*{alertId}" placeholder="Alert ID">
+        <input th:field="*{title}" placeholder="Title">
+        <textarea th:field="*{story}" placeholder="Story"></textarea>
+        <button class="primary">Publish</button>
+    </form>
+    <article class="card" th:each="story : ${stories}"><h2 th:text="${story.title}"></h2><p th:text="${story.story}"></p></article>
+</main>
+</body>
+</html>

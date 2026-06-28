@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head><title>Wallet</title></head>
+<body>
+<main layout:fragment="content" class="page">
+    <h1>Wallet</h1>
+    <p class="balance" th:text="${user.walletBalance}">0.0</p>
+    <form th:action="@{/wallet/deposit}" method="post"><input name="amount" type="number" step="0.01"><button>Deposit</button></form>
+    <form th:action="@{/wallet/withdraw}" method="post"><input name="amount" type="number" step="0.01"><button>Withdraw</button></form>
+    <table><tr><th>Type</th><th>Amount</th><th>Description</th></tr><tr th:each="tx : ${transactions}"><td th:text="${tx.type}"></td><td th:text="${tx.amount}"></td><td th:text="${tx.description}"></td></tr></table>
+</main>
+</body>
+</html>

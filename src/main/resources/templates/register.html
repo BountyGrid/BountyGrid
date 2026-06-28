@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register - BountyGrid</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<main class="auth">
+    <h1>Create account</h1>
+    <form th:action="@{/register}" th:object="${registerRequest}" method="post">
+        <input th:field="*{name}" placeholder="Name" required>
+        <input th:field="*{email}" type="email" placeholder="Email" required>
+        <input th:field="*{phone}" placeholder="Phone">
+        <input th:field="*{city}" placeholder="City">
+        <input th:field="*{password}" type="password" placeholder="Password" required>
+        <button class="primary" type="submit">Create account</button>
+    </form>
+    <a th:href="@{/login}">Log in</a>
+</main>
+</body>
+</html>

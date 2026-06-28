@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head><title>Leaderboard</title></head>
+<body>
+<main layout:fragment="content" class="page">
+    <h1>Leaderboard</h1>
+    <p>Your rank: <strong th:text="${rank}">1</strong></p>
+    <ol class="leaderboard"><li th:each="user : ${users}"><span th:text="${user.name}"></span><strong th:text="${user.points}"></strong></li></ol>
+</main>
+</body>
+</html>
