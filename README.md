@@ -34,3 +34,6 @@ flutter run
 
 For store builds, point the app at a public HTTPS backend URL instead of a local
 development URL.
+
+See `docs/store/mobile-release-checklist.md` for local testing, App Store, and
+Play Store setup.

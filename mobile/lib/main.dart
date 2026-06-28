@@ -8,6 +8,19 @@ void main() {
   runApp(const BountyGridApp());
 }
 
+class AppConfig {
+  static const configuredApiBase = String.fromEnvironment('API_BASE_URL');
+  static const appEnvironment = String.fromEnvironment('APP_ENV', defaultValue: 'local');
+
+  static String get defaultApiBase {
+    if (configuredApiBase.isNotEmpty) return configuredApiBase;
+    if (Platform.isIOS || Platform.isMacOS) return 'http://localhost:8080/api';
+    return 'http://10.0.2.2:8080/api';
+  }
+
+  static bool get isStoreBuild => appEnvironment == 'production';
+}
+
 class BountyGridApp extends StatelessWidget {
   const BountyGridApp({super.key});
 
@@ -146,7 +159,7 @@ class AuthPanel extends StatefulWidget {
 }
 
 class _AuthPanelState extends State<AuthPanel> {
-  final base = TextEditingController(text: 'http://10.0.2.2:8080/api');
+  late final TextEditingController base = TextEditingController(text: widget.api.baseUrl);
   final name = TextEditingController();
   final email = TextEditingController();
   final password = TextEditingController();
@@ -163,7 +176,7 @@ class _AuthPanelState extends State<AuthPanel> {
         const SizedBox(height: 8),
         const Text('Lost and found alerts, rewards, tips, SOS, and recovery stories.'),
         const SizedBox(height: 20),
-        AppTextField(controller: base, label: 'API base URL'),
+        if (!AppConfig.isStoreBuild) AppTextField(controller: base, label: 'API base URL'),
         AppTextField(controller: email, label: 'Email', keyboardType: TextInputType.emailAddress),
         AppTextField(controller: password, label: 'Password', obscureText: true),
         AppTextField(controller: name, label: 'Name for registration'),
@@ -519,7 +532,7 @@ class AppTextField extends StatelessWidget {
 }
 
 class ApiClient {
-  String baseUrl = 'http://10.0.2.2:8080/api';
+  String baseUrl = AppConfig.defaultApiBase;
   String token = '';
 
   Future<Map<String, dynamic>> getMap(String path) async {

@@ -11,12 +11,21 @@ Install Flutter, Xcode, and Android Studio. Then run:
 cd mobile
 flutter create .
 flutter pub get
-flutter run
+./scripts/run_android_local.sh
 ```
 
 The app defaults to `http://10.0.2.2:8080/api` for Android emulator access to
 the local Spring Boot backend. For iOS Simulator, use `http://localhost:8080/api`.
 For real devices and store builds, use a public HTTPS API URL.
+
+For iOS Simulator:
+
+```bash
+./scripts/run_ios_local.sh
+```
+
+For release builds, copy `config/production.example.json` to
+`config/production.json` and set your public HTTPS backend URL.
 
 ## Store readiness
 
